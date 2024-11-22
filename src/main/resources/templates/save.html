@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>save</title>
+    <!-- jquery cdn -->
+    <script
+            src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/saveStyle.css">
+</head>
+<body>
+<!-- action속성: form에 작성한 데이터를 어디로 보낼지 지정 -->
+<form action="/devsign/save" method="post">
+    <!-- name속성: 서버로 전송할 때 변수이름의 역할 -->
+    아이디: <input type="text" name="userId" id="userId" onkeyup="userIdCheck()"> <br>
+    <p id="check-result"></p>
+    비밀번호: <input type="password" name="password"> <br>
+    이름: <input type="text" name="name"> <br>
+    대학교: <input type="text" name="university"> <br>
+    전공: <input type="text" name="major"> <br>
+    학번: <input type="text" name="studentNumber"> <br>
+    생년월일: <input type="date" name="birth"> <br>
+    전화번호: <input type="tel" name="tel"> <br>
+    성별: <select id="gender" name="gender">
+    <option value="">선택하세요</option>
+    <option value="MALE">남성</option>
+    <option value="FEMALE">여성</option>
+</select> <br>
+    이메일: <input type="email" name="email"> <br>
+    <input type="submit" value="회원가입">
+</form>
+
+
+</body>
+<script th:inline="javascript">
+    const userIdCheck = () => {
+        const userId = document.getElementById("userId").value;
+        const checkResult = document.getElementById("check-result");
+        console.log("입력값: ",userId);
+        $.ajax({
+            // 요청방식: post, url: "email-check", 데이터: 이메일
+            type: "post",
+            url: "/devsign/userId-check",
+            data: {
+                "userId": userId
+            },
+            success: function(res) {
+                console.log("요청성공",res);
+                if (res == "ok"){
+                    console.log("사용가능한 아이디");
+                    checkResult.innerHTML = "사용가능한 아이디";
+                } else {
+                    console.log("이미 사용중인 아이디")
+                    checkResult.innerHTML = "이미 사용중인 아이디";
+                }
+            },
+            error: function(err) {
+                console.log("에러발생", err)
+            }
+        })
+    }
+</script>
+</html>

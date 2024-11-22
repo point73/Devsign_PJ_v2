@@ -1,0 +1,72 @@
+/* 기본 설정 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4; /* 밝은 배경색 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* 폼 스타일 */
+form {
+    background-color: #ffffff; /* 흰색 배경 */
+    border: 1px solid #ddd; /* 얇은 테두리 */
+    border-radius: 8px; /* 둥근 모서리 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 부드러운 그림자 */
+    padding: 20px 30px;
+    width: 100%;
+    max-width: 350px; /* 폼 최대 너비 */
+    box-sizing: border-box; /* 패딩 포함 박스 크기 */
+}
+
+/* 입력 필드 스타일 */
+form input[type="text"],
+form input[type="password"] {
+    width: 100%; /* 전체 너비 사용 */
+    padding: 10px; /* 내부 여백 */
+    margin: 10px 0; /* 위아래 여백 */
+    border: 1px solid #ccc; /* 기본 테두리 */
+    border-radius: 4px; /* 모서리 둥글게 */
+    font-size: 14px; /* 글씨 크기 */
+    box-sizing: border-box;
+}
+
+/* 버튼 스타일 */
+form input[type="submit"] {
+    width: 100%; /* 버튼 너비를 폼에 맞춤 */
+    padding: 10px; /* 버튼 패딩 */
+    background-color: #007BFF; /* 파란색 배경 */
+    color: #ffffff; /* 흰색 글씨 */
+    border: none;
+    border-radius: 4px; /* 모서리 둥글게 */
+    cursor: pointer;
+    font-size: 16px; /* 글씨 크기 */
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.2s; /* 부드러운 애니메이션 효과 */
+}
+
+/* 버튼 호버 효과 */
+form input[type="submit"]:hover {
+    background-color: #0056b3; /* 어두운 파란색 */
+    transform: scale(1.05); /* 살짝 확대 */
+}
+
+/* 버튼 활성화 상태 */
+form input[type="submit"]:active {
+    background-color: #003f7f; /* 더 어두운 파란색 */
+    transform: scale(0.95); /* 살짝 축소 */
+}
+
+/* 폼 내부 요소 간격 */
+form > * {
+    margin-bottom: 15px; /* 폼 요소 간의 여백 */
+}
+
+/* 텍스트 레이블 스타일 */
+form label {
+    font-size: 14px;
+    color: #333333; /* 진한 회색 */
+}

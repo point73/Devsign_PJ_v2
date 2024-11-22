@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>update</title>
+    <link rel="stylesheet" href="/css/updateStyle.css">
+</head>
+<body>
+<form action="/devsign/update" method="post">
+    <input type="hidden" th:value="${updateDevsign.id}" name="id"><br>
+    아이디: <input type="text" th:value="${updateDevsign.userId}" name="userId" readonly> <br>
+    비밀번호: <input type="text" th:value="${updateDevsign.password}" name="password"> <br>
+    이름: <input type="text" th:value="${updateDevsign.name}" name="name"> <br>
+    학교: <input type="text" th:value="${updateDevsign.university}" name="university"> <br>
+    학과: <input type="text" th:value="${updateDevsign.major}" name="major"> <br>
+    학번: <input type="text" th:value="${updateDevsign.studentNumber}" name="studentNumber"> <br>
+    성별: <input type="text" th:value="${updateDevsign.gender}" name="gender"> <br>
+    생년월일: <input type="text" th:value="${updateDevsign.birth}" name="birth"> <br>
+    전화번호: <input type="text" th:value="${updateDevsign.tel}" name="tel"> <br>
+    이메일: <input type="text" th:value="${updateDevsign.email}" name="email"> <br>
+    <input type="submit" value="정보수정">
+</form>
+</body>
+</html>

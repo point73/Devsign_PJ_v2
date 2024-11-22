@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>main</title>
+    <link rel="stylesheet" href="/css/mainStyle.css">
+</head>
+<body>
+    session 값 확인: <p th:text="${session.loginUserId}"></p>
+    <a href="/devsign/update">내 정보 수정하기</a>
+    <a href="/devsign/logout">로그아웃</a>
+</body>
+</html>

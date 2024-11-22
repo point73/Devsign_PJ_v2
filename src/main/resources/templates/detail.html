@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>detail</title>
+    <link rel="stylesheet" href="/css/detailStyle.css">
+</head>
+<body>
+<table>
+    <tr>
+        <th>번호</th>
+        <th>아이디</th>
+        <th>비밀번호</th>
+        <th>이름</th>
+        <th>학교</th>
+        <th>학과</th>
+        <th>학번</th>
+        <th>성별</th>
+        <th>생년월일</th>
+        <th>전화번호</th>
+        <th>이메일</th>
+    </tr>
+    <tr>
+        <td th:text="${devsign.id}"></td>
+        <td th:text="${devsign.userId}"></td>
+        <td th:text="${devsign.password}"></td>
+        <td th:text="${devsign.name}"></td>
+        <td th:text="${devsign.university}"></td>
+        <td th:text="${devsign.major}"></td>
+        <td th:text="${devsign.studentNumber}"></td>
+        <td th:text="${devsign.gender}"></td>
+        <td th:text="${devsign.birth}"></td>
+        <td th:text="${devsign.tel}"></td>
+        <td th:text="${devsign.email}"></td>
+    </tr>
+</table>
+</body>
+</html>

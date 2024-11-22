@@ -1,0 +1,73 @@
+/* 기본 설정 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* 폼 스타일 */
+form {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 30px 40px;
+    width: 100%;
+    max-width: 450px; /* 너비 조금 더 넓게 */
+}
+
+/* 폼 내부 요소 */
+form input[type="text"],
+form input[type="password"],
+form input[type="tel"],
+form input[type="email"],
+form input[type="date"],
+form select {
+    width: 100%;
+    padding: 12px; /* 입력 필드 패딩 키움 */
+    margin: 15px 0; /* 여백을 더 줌 */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px; /* 폰트 크기 증가 */
+}
+
+/* 버튼 스타일 */
+form input[type="submit"] {
+    background-color: #007BFF;
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px; /* 버튼 크기 증가 */
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+form input[type="submit"]:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+form input[type="submit"]:active {
+    background-color: #003f7f;
+    transform: scale(0.95);
+}
+
+/* 이메일 확인 결과 메시지 */
+#check-result {
+    margin: 10px 0 20px 0;
+    font-size: 16px; /* 메시지 크기 증가 */
+    font-weight: bold;
+    color: #007BFF;
+}
+
+/* 에러 메시지 강조 */
+#check-result.error {
+    color: #FF4D4D;
+}
