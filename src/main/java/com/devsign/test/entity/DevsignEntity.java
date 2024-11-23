@@ -42,7 +42,7 @@ public class DevsignEntity {
     private boolean withdrawal; // "withdrawal" 필드
 
     @Column(name = "withdrawal_date")
-    private LocalDate withdrawalDate; // "withdrawal_date" 필드
+    private LocalDateTime withdrawalDate; // "withdrawal_date" 필드
 
     @Enumerated(EnumType.STRING)
     @Column(name = "gender")

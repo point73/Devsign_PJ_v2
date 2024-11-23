@@ -4,13 +4,11 @@ import com.devsign.test.dto.DevsignDTO;
 import com.devsign.test.entity.DevsignEntity;
 import com.devsign.test.repository.DevsignRepository;
 import jakarta.persistence.EntityNotFoundException;
-import jakarta.servlet.http.HttpSession;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -20,6 +18,7 @@ import java.util.Optional;
 public class DevsignService {
     private final DevsignRepository devsignRepository;
 
+    @Transactional
     public void save(DevsignDTO devsignDTO) {
         DevsignEntity devsignEntity = DevsignEntity.toDevsignEntity(devsignDTO);
         // 자동 값 설정
@@ -33,7 +32,8 @@ public class DevsignService {
 
     public DevsignDTO login(DevsignDTO devsignDTO) {
         Optional<DevsignEntity> byUserId = devsignRepository.findByUserId(devsignDTO.getUserId());
-        if (byUserId.isPresent()) {
+        Optional<DevsignEntity> ByWithdrawal = devsignRepository.findByWithdrawal(false);
+        if (byUserId.isPresent() && ByWithdrawal.isPresent()) {
             // 조회 결과가 있다(해당 아이디를 가진 회원 정보가 있다)
             DevsignEntity devsignEntity = byUserId.get();
             if (devsignEntity.getPassword().equals(devsignDTO.getPassword())) {
@@ -53,7 +53,7 @@ public class DevsignService {
 
 
     public List<DevsignDTO> findAll() {
-        List<DevsignEntity> devsignEntityList = devsignRepository.findAll();
+        List<DevsignEntity> devsignEntityList = devsignRepository.findAllByWithdrawal(false);
         List<DevsignDTO> devsignDTOList = new ArrayList<>();
         for (DevsignEntity devsignEntity : devsignEntityList) {
             devsignDTOList.add(DevsignDTO.toDevsignDTO(devsignEntity));
@@ -79,6 +79,7 @@ public class DevsignService {
         }
     }
 
+    @Transactional
     public void update(DevsignDTO devsignDTO, String myUserId) {
         Optional<DevsignEntity> optionalDevsignEntity = devsignRepository.findByUserId(myUserId);
 
@@ -99,14 +100,23 @@ public class DevsignService {
 
             existingEntity.setChangeDate(LocalDateTime.now());
 
-            devsignRepository.save(existingEntity);
         } else {
             throw new EntityNotFoundException("ID에 해당하는 회원 정보를 찾을 수 없습니다: " + myUserId);
         }
     }
 
+    @Transactional
     public void delete(Long id) {
-        devsignRepository.deleteById(id);
+        Optional<DevsignEntity> optionalDevsignEntity = devsignRepository.findById(id);
+        if (optionalDevsignEntity.isPresent()) {
+            DevsignEntity existingEntity = optionalDevsignEntity.get();
+
+            existingEntity.setWithdrawal(true);
+            existingEntity.setWithdrawalDate(LocalDateTime.now());
+        }
+        else {
+            throw new EntityNotFoundException("회원 정보를 찾을 수 없습니다: ");
+        }
     }
 
 
