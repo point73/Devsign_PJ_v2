@@ -8,6 +8,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    box-sizing: border-box; /* padding과 margin을 포함한 박스 크기 계산 */
 }
 
 /* 폼 스타일 */
@@ -17,9 +18,10 @@ form {
     border-radius: 8px; /* 둥근 모서리 */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 부드러운 그림자 */
     padding: 20px 30px;
-    width: 100%;
-    max-width: 350px; /* 폼 최대 너비 */
+    width: 80%; /* 화면 너비의 80%로 설정 */
+    max-width: 500px; /* 최대 너비 500px로 제한 */
     box-sizing: border-box; /* 패딩 포함 박스 크기 */
+    min-width: 300px; /* 최소 너비 300px로 설정 */
 }
 
 /* 입력 필드 스타일 */
