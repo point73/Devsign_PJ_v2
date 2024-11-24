@@ -4,10 +4,13 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    height: 100vh; /* 화면 전체를 채우도록 */
+    width: 100%;
+    display: flex; /* Flexbox로 중앙 정렬 */
+    justify-content: center; /* 가로 중앙 정렬 */
+    align-items: flex-start; /* 세로 상단 정렬 */
+    overflow: hidden; /* 화면 크기를 넘지 않게 설정 */
+    transform-origin: top; /* 확대 시 상단을 기준으로 확대 */
 }
 
 /* 폼 스타일 */
@@ -19,6 +22,8 @@ form {
     padding: 30px 40px;
     width: 100%;
     max-width: 450px; /* 너비 조금 더 넓게 */
+    box-sizing: border-box;
+    margin-top: 20px; /* 상단 여백을 50px만큼 추가 */
 }
 
 /* 폼 내부 요소 */

@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>save</title>
     <!-- jquery cdn -->
     <script
@@ -38,7 +40,7 @@
     const userIdCheck = () => {
         const userId = document.getElementById("userId").value;
         const checkResult = document.getElementById("check-result");
-        console.log("입력값: ",userId);
+        console.log("입력값: ", userId);
         $.ajax({
             // 요청방식: post, url: "email-check", 데이터: 이메일
             type: "post",
@@ -46,9 +48,9 @@
             data: {
                 "userId": userId
             },
-            success: function(res) {
-                console.log("요청성공",res);
-                if (res == "ok"){
+            success: function (res) {
+                console.log("요청성공", res);
+                if (res == "ok") {
                     console.log("사용가능한 아이디");
                     checkResult.innerHTML = "사용가능한 아이디";
                 } else {
@@ -56,10 +58,11 @@
                     checkResult.innerHTML = "이미 사용중인 아이디";
                 }
             },
-            error: function(err) {
+            error: function (err) {
                 console.log("에러발생", err)
             }
         })
     }
+
 </script>
 </html>
