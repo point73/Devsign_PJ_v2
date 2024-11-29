@@ -32,8 +32,7 @@ public class DevsignService {
 
     public DevsignDTO login(DevsignDTO devsignDTO) {
         Optional<DevsignEntity> byUserId = devsignRepository.findByUserId(devsignDTO.getUserId());
-        Optional<DevsignEntity> ByWithdrawal = devsignRepository.findByWithdrawal(false);
-        if (byUserId.isPresent() && ByWithdrawal.isPresent()) {
+        if (byUserId.isPresent() && !byUserId.get().isWithdrawal()) {
             // 조회 결과가 있다(해당 아이디를 가진 회원 정보가 있다)
             DevsignEntity devsignEntity = byUserId.get();
             if (devsignEntity.getPassword().equals(devsignDTO.getPassword())) {
