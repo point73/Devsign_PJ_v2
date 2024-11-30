@@ -9,7 +9,7 @@
 <form action="/devsign/update" method="post">
     <input type="hidden" th:value="${updateDevsign.id}" name="id"><br>
     아이디: <input type="text" th:value="${updateDevsign.userId}" name="userId" readonly> <br>
-    비밀번호: <input type="text" th:value="${updateDevsign.password}" name="password"> <br>
+    비밀번호: <input type="password" name="password"> <br>
     이름: <input type="text" th:value="${updateDevsign.name}" name="name"> <br>
     학교: <input type="text" th:value="${updateDevsign.university}" name="university"> <br>
     학과: <input type="text" th:value="${updateDevsign.major}" name="major"> <br>

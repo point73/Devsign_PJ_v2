@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <title>login</title>
     <link rel="stylesheet" href="/css/loginStyle.css">
+    <script>
+        // JavaScript로 팝업 알림 표시
+        function showErrorMessage(message) {
+            if (message) {
+                alert(message);
+            }
+        }
+    </script>
 </head>
 <body>
 <form action="/devsign/login" method="post" >
@@ -11,5 +19,11 @@
     비밀번호: <input type="password" name="password"> <br>
     <input type="submit" value="로그인">
 </form>
+
+<!-- 서버에서 전달된 에러 메시지 -->
+<script th:inline="javascript">
+    var errorMessage = [[${errorMessage}]];
+    showErrorMessage(errorMessage);
+</script>
 </body>
 </html>

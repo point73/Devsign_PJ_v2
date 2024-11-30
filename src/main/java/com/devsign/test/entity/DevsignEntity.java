@@ -58,13 +58,16 @@ public class DevsignEntity {
     private String email; // "email" 필드
 
     @Column(name = "change_date", nullable = false, columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
-    private LocalDateTime changeDate;
+    private LocalDateTime changeDate; // "change_date" 필드
 
     @Column(name = "last_date_time")
     private LocalDateTime lastDateTime; // "last_date" 필드
 
     @Column(name = "try_number", columnDefinition = "TINYINT UNSIGNED DEFAULT 0")
     private int tryNumber; // "try_number" 필드
+
+    @Column(name = "lock_time")
+    private LocalDateTime lockTime; // "lock_time" 필드
 
 
     public static DevsignEntity toDevsignEntity(DevsignDTO devsignDTO) {

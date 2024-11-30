@@ -32,7 +32,7 @@ public class DevsignController {
     }
 
     @PostMapping("/devsign/login")
-    public String login(@ModelAttribute DevsignDTO devsignDTO, HttpSession session) {
+    public String login(@ModelAttribute DevsignDTO devsignDTO, HttpSession session, Model model) {
         DevsignDTO loginResult = devsignService.login(devsignDTO);
         if (loginResult != null) {
             // login 성공
@@ -40,6 +40,7 @@ public class DevsignController {
             return "main";
         } else {
             // login 실패
+            model.addAttribute("errorMessage", "로그인 실패: 아이디 또는 비밀번호가 잘못되었습니다.");
             return "login";
         }
     }
